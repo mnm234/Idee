@@ -58,7 +58,8 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
             .addOnSuccessListener { result ->
                 for (document in result) {
 //                    Log.d("あああ", document.data["recFlag"].toString())
-                    profMutableList.add(ProfilePageInfo(document.data["gId"] as Long, document.data["friendCode"].toString(), document.data["recFlag"] as Boolean))
+                    profMutableList.add(ProfilePageInfo(document.data["gId"] as Long, document.data["friendCode"].toString(), document.data["recFlag"] as Boolean, document.data["intro"].toString()))
+                    Log.d("intro", document.data["intro"].toString())
 
                 }
                 profile_recyclerView.adapter = ProfileGameListRecyclerAdapter(this.context!!, this, profMutableList)

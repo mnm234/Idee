@@ -18,6 +18,7 @@ class SearchRecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val itemTextView: TextView = view.findViewById(R.id.gameListId)
     val itemImageView: ImageView = view.findViewById(R.id.gameListIcon)
     val itemButton: Button = view.findViewById(R.id.copy_button)
+    val itemIntroductionTextView: TextView = view.findViewById(R.id.introduction_textView)
 
     init {
         // layoutの初期設定するときはココ

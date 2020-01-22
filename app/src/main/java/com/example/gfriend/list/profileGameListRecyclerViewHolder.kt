@@ -17,6 +17,7 @@ class ProfileRecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val itemTextView: TextView = view.findViewById(R.id.gameListId)
     val itemImageView: ImageView = view.findViewById(R.id.gameListIcon)
     val itemSwitch: Switch = view.findViewById(R.id.bosyu_switch)
+    val itemIntroductionTextView: TextView = view.findViewById(R.id.introduction_textView)
 
     init {
         // layoutの初期設定するときはココ

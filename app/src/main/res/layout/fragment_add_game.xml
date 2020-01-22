@@ -32,11 +32,20 @@
         android:hint="ゲームID"
         android:layout_marginHorizontal="30dp"
         tools:ignore="MissingConstraints" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/IntroductionAboutMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/gameIdRegistration"
+        android:hint="紹介文"
+        android:layout_marginHorizontal="30dp"
+        android:maxLength="20"
+        tools:ignore="MissingConstraints" />
     <Button
         android:id="@+id/mygame_submit_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameIdRegistration"
+        app:layout_constraintTop_toBottomOf="@id/IntroductionAboutMe"
         android:text="更新"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

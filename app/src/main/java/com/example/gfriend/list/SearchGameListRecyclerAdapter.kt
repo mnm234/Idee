@@ -50,6 +50,7 @@ class SearchGameListRecyclerAdapter(
 //                    .into(a.itemImageView)
 //            }
             it.itemImageView.setImageBitmap(readImage("${itemList[position].profGameId}.png",context))
+            it.itemIntroductionTextView.text = itemList[position].intro
 //            it.itemSwitch.isChecked = itemList[position].recFlag
 
 

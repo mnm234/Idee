@@ -49,7 +49,7 @@ class AddDialogFragment : DialogFragment() {
                 kakunin_friendcode.text = AddGameFragment.fcode
 
                 update_button.setOnClickListener {
-                    AddGameFragment().DialogOK(AddGameFragment.fcode,gId)
+                    AddGameFragment().DialogOK(AddGameFragment.fcode,gId,AddGameFragment.iText)
                     dialog!!.dismiss()
                 }
                 cancel_button.setOnClickListener {

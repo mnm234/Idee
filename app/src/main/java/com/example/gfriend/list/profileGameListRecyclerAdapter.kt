@@ -55,13 +55,14 @@ class ProfileGameListRecyclerAdapter(
 
             it.itemSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
                 if(isChecked){
-                    CloudFireStore().UpdateMyGame(ProfileFragment.currentUId, itemList[position].profGameId, itemList[position].profGameFriendCode, true,"index")
+                    CloudFireStore().UpdateMyGame(ProfileFragment.currentUId, itemList[position].profGameId, itemList[position].profGameFriendCode, itemList[position].intro,true,"index")
                 }
                 else{
-                    CloudFireStore().UpdateMyGame(ProfileFragment.currentUId, itemList[position].profGameId, itemList[position].profGameFriendCode, false,"index")
+                    CloudFireStore().UpdateMyGame(ProfileFragment.currentUId, itemList[position].profGameId, itemList[position].profGameFriendCode, itemList[position].intro,false,"index")
                 }
             }
 
+            it.itemIntroductionTextView.text = itemList[position].intro
             it.itemTextView.text = itemList[position].profGameFriendCode
         }
     }

@@ -39,35 +39,39 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val db = FirebaseFirestore.getInstance()
-        db.collection("games")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    gamenumber += 1
-//                            Log.d("ユーザの登録済みゲーム一覧", "${document.id} => ${document.data["friendCode"]}")
-                }
-                val storage: FirebaseStorage = FirebaseStorage.getInstance()
-                val storageRef = storage.getReferenceFromUrl("gs://gfriend-65dbd.appspot.com")
-                for (i in 1 ..gamenumber){
-                    val pathReference = storageRef.child("gameIcon/${i}.png")
-                    /**
-                     * メモリに保存する
-                     * */
-                    val ONE_MEGABYTE = (1024 * 1024).toLong()
-                    pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(OnSuccessListener<ByteArray> {
-                        val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
-                        saveImage(bitmap, "${i}.png", this)
-//            readImage("1.png",this)
-                        // Data for "images/island.jpg" is returns, use this as needed
-                    }).addOnFailureListener(OnFailureListener {
-                        // Handle any errors
-                        Log.d("SuccessListener",it.toString())
-                    })
-                }
-            }
-            .addOnFailureListener { exception ->
-                //                        Log.d("ユーザの登録済みゲーム一覧", exception.toString())
-            }
+/**
+ * 画像をメモリ内に保存
+ * */
+//
+//        db.collection("games")
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    gamenumber += 1
+////                            Log.d("ユーザの登録済みゲーム一覧", "${document.id} => ${document.data["friendCode"]}")
+//                }
+//                val storage: FirebaseStorage = FirebaseStorage.getInstance()
+//                val storageRef = storage.getReferenceFromUrl("gs://gfriend-65dbd.appspot.com")
+//                for (i in 1 ..gamenumber){
+//                    val pathReference = storageRef.child("gameIcon/${i}.png")
+//                    /**
+//                     * メモリに保存する
+//                     * */
+//                    val ONE_MEGABYTE = (1024 * 1024).toLong()
+//                    pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(OnSuccessListener<ByteArray> {
+//                        val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                        saveImage(bitmap, "${i}.png", this)
+////            readImage("1.png",this)
+//                        // Data for "images/island.jpg" is returns, use this as needed
+//                    }).addOnFailureListener(OnFailureListener {
+//                        // Handle any errors
+//                        Log.d("SuccessListener",it.toString())
+//                    })
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                //                        Log.d("ユーザの登録済みゲーム一覧", exception.toString())
+//            }
 
 
 //        pathReference.downloadUrl.addOnSuccessListener{

@@ -92,7 +92,6 @@ class AddGameFragment : Fragment() {
                     override fun onNothingSelected(parent: AdapterView<*>) {}
                 }
             }
-        Log.d("g",spinnerItems.toTypedArray().toString())
         val adapter = SpinnerAdapter(
             this.context!!,
             R.layout.spinner, spinnerItems.toTypedArray(), spinnerImages.toTypedArray()
@@ -144,6 +143,7 @@ class AddGameFragment : Fragment() {
             fcode = gameIdRegistration.text.toString()
             gameId = gId
             userId = mAuth!!.currentUser!!.uid
+            iText = IntroductionAboutMe.text.toString()
             dialogFragment.show(this.fragmentManager!!, "test alert dialog")
 
             /**
@@ -161,9 +161,9 @@ class AddGameFragment : Fragment() {
         }
     }
 
-    fun DialogOK(inputCode:String,gameId:Long){
+    fun DialogOK(inputCode:String,gameId:Long,intro:String){
 //        Log.d("popo", userId)
-        CloudFireStore().UpdateMyGame(userId, gameId, inputCode, false,"index")
+        CloudFireStore().UpdateMyGame(userId, gameId, inputCode, intro,false,"index")
 
     }
 
@@ -180,6 +180,7 @@ class AddGameFragment : Fragment() {
         var fcode: String = ""
         var gameId: Long = 0
         var userId:String = ""
+        var iText:String = ""
 
     }
 }

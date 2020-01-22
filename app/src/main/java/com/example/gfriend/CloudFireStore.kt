@@ -32,7 +32,7 @@ class CloudFireStore {
      * MyゲームフレンドコードUpdate
      * */
 
-    fun UpdateMyGame(uId:String, gId:Long, friendCode:String, Recruitment:Boolean, table:String){
+    fun UpdateMyGame(uId:String, gId:Long, friendCode:String, intro:String,Recruitment:Boolean, table:String){
         mAuth = FirebaseAuth.getInstance()
         db.collection(table)
             .whereEqualTo("uId",uId)
@@ -48,7 +48,8 @@ class CloudFireStore {
                                     "uId" to uId,
                                     "gId" to gId,
                                     "friendCode" to friendCode,
-                                    "recFlag" to Recruitment
+                                    "recFlag" to Recruitment,
+                                    "intro" to intro
                                 )
                             )
                 }
@@ -59,7 +60,8 @@ class CloudFireStore {
                                 "uId" to uId,
                                 "gId" to gId,
                                 "friendCode" to friendCode,
-                                "recFlag" to Recruitment
+                                "recFlag" to Recruitment,
+                                "intro" to intro
                             )
                         )
                         .addOnSuccessListener { documentReference ->

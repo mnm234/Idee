@@ -40,7 +40,7 @@ class SearchFragment : Fragment(), SearchGameFilterRecyclerViewHolder.ItemClickL
                 .get()
                 .addOnSuccessListener {
                     for( document in it){
-                        searchMutableList.add(ProfilePageInfo(document.data["gId"] as Long, document.data["friendCode"].toString(),document.data["recFlag"] as Boolean))
+                        searchMutableList.add(ProfilePageInfo(document.data["gId"] as Long, document.data["friendCode"].toString(),document.data["recFlag"] as Boolean, document.data["intro"].toString()))
                     }
 //                Log.d("s",searchMutableList.toString())
                     search_recyclerview.adapter = SearchGameListRecyclerAdapter(this.context!!, this, searchMutableList)
@@ -73,7 +73,7 @@ class SearchFragment : Fragment(), SearchGameFilterRecyclerViewHolder.ItemClickL
             .get()
             .addOnSuccessListener {result ->
                 for( document in result){
-                    searchMutableList.add(ProfilePageInfo(document.data["gId"] as Long, document.data["friendCode"].toString(), document.data["recFlag"] as Boolean))
+                    searchMutableList.add(ProfilePageInfo(document.data["gId"] as Long, document.data["friendCode"].toString(), document.data["recFlag"] as Boolean, document.data["intro"].toString()))
                 }
                 search_recyclerview.adapter = SearchGameListRecyclerAdapter(this.context!!, this, searchMutableList)
                 search_recyclerview.layoutManager = LinearLayoutManager(this.context!!, LinearLayoutManager.VERTICAL, false)
