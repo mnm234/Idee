@@ -1,16 +1,21 @@
 package com.example.gfriend.list
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.gfriend.CloudFireStore
 import com.example.gfriend.R
+import com.example.gfriend.SearchFragment
 import com.example.gfriend.profile.ProfileFragment
 import com.example.gfriend.profile.ProfilePageInfo
 import com.example.gfriend.readImage
@@ -77,6 +82,9 @@ class SearchGameListRecyclerAdapter(
             it.itemButton.setOnClickListener {
 //                Log.d("push_copyButton",itemList[position].profGameId.toString())
                 Toast.makeText(this.context, copyText.toString(), Toast.LENGTH_SHORT).show()
+                SearchFragment().copy(copyText.toString())
+
+
             }
 //            it.itemImageView.setImageResource(R.mipmap.ic_launcher)
         }
