@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "281146761502",
+    "firebase_url": "https://gfriend-65dbd.firebaseio.com",
+    "project_id": "gfriend-65dbd",
+    "storage_bucket": "gfriend-65dbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281146761502:android:e426ae9c020127df26690f",
+        "android_client_info": {
+          "package_name": "com.example.gfriend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281146761502-2isj1l221p370jm1ml0q4a618g6rtgam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gfriend",
+            "certificate_hash": "38bdc224283d4b8a4c151660b5e04b0aea337f24"
+          }
+        },
+        {
+          "client_id": "281146761502-01t924l76cmbi2688mvph6j01n3ffub1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0ecQnCaQ53F3WpdTb4v4tY3X4xoCcEtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281146761502-01t924l76cmbi2688mvph6j01n3ffub1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
