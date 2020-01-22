@@ -1,6 +1,8 @@
 package com.example.gfriend.profile
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.gfriend.AddGameFragment
 import com.example.gfriend.R
 import com.example.gfriend.list.ProfileGameListRecyclerAdapter
@@ -20,6 +24,60 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener {
     private var mAuth: FirebaseAuth? = null
     private var profMutableList = mutableListOf<ProfilePageInfo>()
+
+    val itemTouchHelper = ItemTouchHelper(object :
+        ItemTouchHelper.Callback() {
+        override fun getMovementFlags(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder
+        ): Int {
+            return makeFlag(
+                ItemTouchHelper.ACTION_STATE_IDLE,
+                ItemTouchHelper.RIGHT
+            ) or makeFlag(ItemTouchHelper.ACTION_STATE_SWIPE, ItemTouchHelper.LEFT)
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+            if (direction == ItemTouchHelper.LEFT) {
+                val dialog = AlertDialog.Builder(context)
+                dialog.setMessage("削除しますか？")
+                dialog.setOnDismissListener {
+                    viewHolder.let { vh ->
+                        profile_recyclerView?.adapter?.let {
+                            it.notifyItemRemoved(viewHolder.layoutPosition + 1)
+                            it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
+                        }
+                    }
+                }
+                dialog.setPositiveButton("はい") { _: DialogInterface, i: Int ->
+                    val position = viewHolder.layoutPosition
+                    viewHolder.let { vh ->
+                        profile_recyclerView?.adapter?.let {
+                            it.notifyItemRemoved(viewHolder.layoutPosition + 1)
+                            it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
+                        }
+                    }
+                    return@setPositiveButton
+                }.setNegativeButton("いいえ") { _: DialogInterface, i: Int ->
+                    return@setNegativeButton
+                }.show()
+            }
+        }
+
+        override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+            super.onSelectedChanged(viewHolder, actionState)
+        }
+
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return true
+        }
+    })
     override fun onItemClick(view: View, position: Int) {
         Toast.makeText(this.context, "position $position was tapped", Toast.LENGTH_SHORT).show()
     }
@@ -88,7 +146,7 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
             )
                 ?.commit()
         }
-
+        itemTouchHelper.attachToRecyclerView(profile_recyclerView)
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -98,6 +156,5 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
     }
     companion object {
         var currentUId:String = ""
-
     }
 }
