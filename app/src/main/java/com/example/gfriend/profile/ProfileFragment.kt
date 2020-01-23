@@ -25,6 +25,8 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
     private var mAuth: FirebaseAuth? = null
     private var profMutableList = mutableListOf<ProfilePageInfo>()
 
+    val db = FirebaseFirestore.getInstance()
+
     val itemTouchHelper = ItemTouchHelper(object :
         ItemTouchHelper.Callback() {
         override fun getMovementFlags(
@@ -43,9 +45,11 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
                 val dialog = AlertDialog.Builder(context)
                 dialog.setMessage("削除しますか？")
                 dialog.setOnDismissListener {
+                    val position = viewHolder.layoutPosition
                     viewHolder.let { vh ->
                         profile_recyclerView?.adapter?.let {
-                            it.notifyItemRemoved(viewHolder.layoutPosition + 1)
+//                            it.notifyDataSetChanged()
+//                            it.notifyItemRemoved(vh.layoutPosition-1)
                             it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
                         }
                     }
@@ -54,8 +58,34 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
                     val position = viewHolder.layoutPosition
                     viewHolder.let { vh ->
                         profile_recyclerView?.adapter?.let {
-                            it.notifyItemRemoved(viewHolder.layoutPosition + 1)
-                            it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
+                            val recyclerViewAdapter = it
+                            db.collection("index")
+                                .whereEqualTo("uId", mAuth!!.currentUser?.uid.toString())
+                                .whereEqualTo("gId", profMutableList[position].profGameId)
+                                .get()
+                                .addOnSuccessListener {
+
+                                    for( document in it){
+                                        Log.d("it", document.id.toString())
+                                        db.collection("index").document(document.id)
+                                            .delete()
+                                            .addOnSuccessListener {
+//                                                Log.d("remove","success!!")
+//                                                recyclerViewAdapter.notifyItemRemoved(vh.layoutPosition)
+//                                                recyclerViewAdapter.notifyItemRangeChanged(vh.layoutPosition, recyclerViewAdapter.itemCount)
+                                            }
+                                            .addOnFailureListener {
+                                                Log.d("remove", it.toString())
+                                            }
+                                    }
+                                    recyclerViewAdapter.notifyItemRemoved(viewHolder.layoutPosition)
+//                                    it.notifyItemRemoved(viewHolder.layoutPosition + 1)
+//                                    it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
+
+
+                                }
+                                .addOnFailureListener { e -> Log.d("aaaaa", e.toString()) }
+
                         }
                     }
                     return@setPositiveButton
