@@ -5,11 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Splash"
-        android:textSize="30dp"
-        android:gravity="center"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Splash"-->
+<!--        android:textSize="30dp"-->
+<!--        android:gravity="center"/>-->
+<!--    <ImageView-->
+<!--        android:src="@drawable/splash"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="fitXY"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

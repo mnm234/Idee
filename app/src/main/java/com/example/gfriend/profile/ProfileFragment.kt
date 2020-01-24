@@ -48,9 +48,9 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
                     val position = viewHolder.layoutPosition
                     viewHolder.let { vh ->
                         profile_recyclerView?.adapter?.let {
-//                            it.notifyDataSetChanged()
 //                            it.notifyItemRemoved(vh.layoutPosition-1)
                             it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
+//                            it.notifyDataSetChanged()
                         }
                     }
                 }
@@ -71,16 +71,21 @@ class ProfileFragment : Fragment(), ProfileRecyclerViewHolder.ItemClickListener 
                                             .delete()
                                             .addOnSuccessListener {
 //                                                Log.d("remove","success!!")
-//                                                recyclerViewAdapter.notifyItemRemoved(vh.layoutPosition)
-//                                                recyclerViewAdapter.notifyItemRangeChanged(vh.layoutPosition, recyclerViewAdapter.itemCount)
+
+                                                recyclerViewAdapter.notifyItemRemoved(position)
+//                                                recyclerViewAdapter.notifyItemRangeChanged(position, recyclerViewAdapter.itemCount-1)
+//                                                recyclerViewAdapter.notifyDataSetChanged()
+
+//                                                recyclerViewAdapter.notifyDataSetChanged()
                                             }
                                             .addOnFailureListener {
+//                                                recyclerViewAdapter.notifyDataSetChanged()
                                                 Log.d("remove", it.toString())
                                             }
                                     }
-                                    recyclerViewAdapter.notifyItemRemoved(viewHolder.layoutPosition)
+//                                    recyclerViewAdapter.notifyItemRemoved(viewHolder.layoutPosition)
 //                                    it.notifyItemRemoved(viewHolder.layoutPosition + 1)
-//                                    it.notifyItemRangeChanged(vh.layoutPosition, it.itemCount)
+//                                    recyclerViewAdapter.notifyItemRangeChanged(vh.layoutPosition, recyclerViewAdapter.itemCount)
 
 
                                 }
