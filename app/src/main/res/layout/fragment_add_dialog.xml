@@ -28,7 +28,7 @@
             />
     </LinearLayout>
     <TextView
-        android:text="紹介文"
+        android:text="ひとこと"
         android:maxLength="20"
         android:layout_marginVertical="8dp"
         android:id="@+id/introduction_textView"

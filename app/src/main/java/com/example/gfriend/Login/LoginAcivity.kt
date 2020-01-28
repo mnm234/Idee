@@ -1,5 +1,6 @@
 package com.example.gfriend.Login
 
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.gfriend.R
@@ -15,7 +16,13 @@ class LoginAcivity : AppCompatActivity() {
         val signInFragment = SignInFragment()
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
+        manifestFont = Typeface.createFromAsset(assets, "MANIFESTO.ttf")
+        gordonFont = Typeface.createFromAsset(assets, "gordon__.ttf")
         fragmentTransaction.replace(R.id.container, signInFragment)
         fragmentTransaction.commit()
         }
+    companion object{
+        lateinit var manifestFont :Typeface
+        lateinit var gordonFont : Typeface
+    }
     }

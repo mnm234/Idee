@@ -34,6 +34,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        login_title.typeface = LoginAcivity.gordonFont
         signUpButton.setOnClickListener {
             mAuth!!.createUserWithEmailAndPassword(
                 signUpUserName.text.toString(),

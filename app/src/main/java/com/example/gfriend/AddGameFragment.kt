@@ -29,6 +29,7 @@ class AddGameFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         mAuth = FirebaseAuth.getInstance()
         user = mAuth!!.currentUser!!.uid
 

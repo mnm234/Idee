@@ -3,9 +3,23 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
     </style>
+
+
+
+    <!-- カスタムベーステーマを追加 -->
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="customTextColor">@color/white</item>
+    </style>
+
+    <!-- カスタムベーステーマを継承するテーマを追加 -->
+<!--    <style name="MyCustomTheme.Default" parent="MyCustomTheme">-->
+<!--    </style>-->
+
+<!--    <style name="MyCustomTheme.Dark" parent="MyCustomTheme">-->
+<!--    </style>-->
 
 </resources>

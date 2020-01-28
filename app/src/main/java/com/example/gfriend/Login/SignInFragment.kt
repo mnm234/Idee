@@ -41,6 +41,7 @@ class SignInFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        login_title.typeface = LoginAcivity.gordonFont
         signInButton.setOnClickListener {
             Log.d("signIn","start!")
             // プログレスダイアログの生成

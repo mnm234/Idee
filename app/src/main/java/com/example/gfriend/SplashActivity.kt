@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.gfriend.Login.LoginAcivity
+import android.graphics.Typeface
+import kotlinx.android.synthetic.main.activity_splash.*
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -22,7 +25,9 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        handler.postDelayed(runnable, 1000)
+        val customFont = Typeface.createFromAsset(assets, "gordon__.ttf")
+        splash_Text.typeface = customFont
+        handler.postDelayed(runnable, 2000)
     }
     override fun onStop() {
         super.onStop()

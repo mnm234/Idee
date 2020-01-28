@@ -1,33 +1,14 @@
 package com.example.gfriend
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
-import android.net.Uri
+
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
-import android.provider.MediaStore
-import android.util.Log
-import androidx.core.net.toUri
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.gfriend.profile.ProfileFragment
-import com.google.firebase.storage.FirebaseStorage
-import java.io.FileDescriptor
-import java.io.InputStream
-import java.net.URL
-import androidx.annotation.NonNull
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import com.google.firebase.storage.FileDownloadTask
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.io.File
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
 
 
 
@@ -38,7 +19,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setTheme(R.style.ThemeOverlay_MaterialComponents_Dark)
         val db = FirebaseFirestore.getInstance()
+        val manifestFont = Typeface.createFromAsset(assets, "MANIFESTO.ttf")
+
 /**
  * 画像をメモリ内に保存
  * */
@@ -190,6 +174,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 //        return bitmap
 //    }
+
 }
 
 

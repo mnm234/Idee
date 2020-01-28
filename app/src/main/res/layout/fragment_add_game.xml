@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/gameIdRegistration"
-        android:hint="紹介文"
+        android:hint="ひとこと"
         android:layout_marginHorizontal="30dp"
         android:maxLength="20"
         tools:ignore="MissingConstraints" />
