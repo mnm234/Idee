@@ -91,16 +91,16 @@ class MainActivity : AppCompatActivity() {
 
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_content, HomeFragment())
+            .replace(R.id.main_content, ProfileFragment())
             .commit()
 
 
         bottomNavi.setOnNavigationItemSelectedListener { item ->
             // 各選択したときの処理
             when (item.itemId) {
-                R.id.menu_home -> {
+                R.id.menu_setting -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_content, HomeFragment())
+                        .replace(R.id.main_content, SettingFragment())
                         .commit()
                     return@setOnNavigationItemSelectedListener true
                 }

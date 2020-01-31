@@ -3,12 +3,15 @@ package com.example.gfriend
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gfriend.list.*
@@ -26,6 +29,7 @@ class SearchFragment : Fragment(), SearchGameFilterRecyclerViewHolder.ItemClickL
     private var searchMutableList = mutableListOf<ProfilePageInfo>()
     private var filterMutableList = mutableListOf<SearchGameFilter>()
     private var selectItemPosition:Int ?= 99999
+    private var tempImageView: ImageView ?= null
 
     override fun onItemClick(view: View, position: Int) {
         Log.d("view", view.toString())
@@ -35,6 +39,18 @@ class SearchFragment : Fragment(), SearchGameFilterRecyclerViewHolder.ItemClickL
     override fun filterOnItemClick(view: View, position: Int) {
         super.filterOnItemClick(view, position)
         if(position!=selectItemPosition){
+            val viewGroup = view as ViewGroup
+            val a = viewGroup.findViewById(R.id.gameFilterIcon) as ImageView
+            if(tempImageView != null){
+                val matrix = ColorMatrix()
+                matrix.setSaturation(0f)
+                val filter = ColorMatrixColorFilter(matrix)
+                tempImageView!!.colorFilter = filter
+            }
+            tempImageView = a
+
+            a.clearColorFilter()
+
             selectItemPosition = position
             searchMutableList.clear()
             val db = FirebaseFirestore.getInstance()

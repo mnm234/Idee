@@ -58,10 +58,10 @@ class SpinnerAdapter internal constructor(
             holder = convertView.tag as ViewHolder
         }
 
-//        holder.imageView!!.setImageResource(imageIDs[position])
-        var storage: FirebaseStorage = FirebaseStorage.getInstance()
-        var storageRef = storage.getReferenceFromUrl("gs://gfriend-65dbd.appspot.com")
-        var pathReference = storageRef.child("gameIcon/${spinnerImages[position]}.png")
+////        holder.imageView!!.setImageResource(imageIDs[position])
+//        var storage: FirebaseStorage = FirebaseStorage.getInstance()
+//        var storageRef = storage.getReferenceFromUrl("gs://gfriend-65dbd.appspot.com")
+//        var pathReference = storageRef.child("gameIcon/${spinnerImages[position]}.png")
 //        var a = it
 //        pathReference.downloadUrl.addOnSuccessListener {
 //            Glide.with(this.context)

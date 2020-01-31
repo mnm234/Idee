@@ -46,25 +46,25 @@ class AddGameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         db.collection("games")
-            .orderBy("gameId")
-            .get()
-            .addOnSuccessListener {result ->
-                for(document in result) {
-                    spinnerItems.add(document.data["gameName"].toString())
-                    spinnerImages.add(document.data["gameId"].toString())
+                    .orderBy("gameId")
+                    .get()
+                    .addOnSuccessListener {result ->
+                        for(document in result) {
+                            spinnerItems.add(document.data["gameName"].toString())
+                            spinnerImages.add(document.data["gameId"].toString())
 //                            Log.d("ユーザの登録済みゲーム一覧", "${document.id} => ${document.data["friendCode"]}")
-                }
-                Log.d("s",spinnerItems.toString())
-                val adapter = SpinnerAdapter(
-                    this.context!!,
-                    R.layout.spinner, spinnerItems.toTypedArray(), spinnerImages.toTypedArray()
-                )
-                my_game_select.adapter = adapter
+                        }
+                        Log.d("s",spinnerItems.toString())
+                        val adapter = SpinnerAdapter(
+                            this.context!!,
+                            R.layout.spinner, spinnerItems.toTypedArray(), spinnerImages.toTypedArray()
+                        )
+                        my_game_select.adapter = adapter
 
-                my_game_select.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    //　アイテムが選択された時
-                    override fun onItemSelected(
-                        parent: AdapterView<*>,
+                        my_game_select.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            //　アイテムが選択された時
+                            override fun onItemSelected(
+                                parent: AdapterView<*>,
                         viw: View, position: Int, id: Long
                     ) {
 //                        spinner_image_view.setImageResource(

@@ -4,6 +4,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +24,10 @@ import com.example.gfriend.readImage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import android.graphics.ColorMatrixColorFilter
+import android.graphics.ColorMatrix
+
+
 
 class SearchGameListRecyclerAdapter(
     private val context: Context,
@@ -55,6 +61,9 @@ class SearchGameListRecyclerAdapter(
 //                    .into(a.itemImageView)
 //            }
             it.itemImageView.setImageBitmap(readImage("${itemList[position].profGameId}.png",context))
+
+
+
             it.itemIntroductionTextView.text = itemList[position].intro
 //            it.itemSwitch.isChecked = itemList[position].recFlag
 
